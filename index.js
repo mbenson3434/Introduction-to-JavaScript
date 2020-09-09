@@ -2,21 +2,25 @@
 //Task a: declare a variable called votingAge, console log true if age > 18 (no function required)
 
 const votingAge = 18;
-const age = 34;
-if(age > votingAge) {
+
+if(votingAge >= 18) {
     console.log(true);
+} else if(votingAge < 18) {
+    console.log(false);
 }
 
 
 //Task b: declare a variable and then use a conditional to change the value of that variable based on the value assigned to a second variable (no function required)
 
-const variable1 = 5;
-const variable2 = 10;
-if(variable2 > 8) {
-    console.log(variable1 + 1);
+let mood = 'Soso';
+let isGood = 'Bad';
+if(isGood === 'Good') {
+   mood = "Happy";
+}else{
+    mood = "Sad";
 }
 
-
+console.log(mood);
 
 //Task c: Convert string ("1999") to integer (1999)  (no function required) // hint look up the Number method
 
@@ -61,13 +65,25 @@ console.log(dogYears(34));
 
 // when you are finished invoke your function with the weight of 15 lbs and the age of 1 year - if your calculations are correct your result should be 0.44999999999999996
 
-const feedYourDog = (weight,age) => {
-    if(age >= 1) {
-        
+function dogFeeder(weight, age) {
+    if(age >= 1 && weight <=5) {
+        return weight * 0.05
+    }else if(age >= 1 && weight >= 6 && weight <= 10) {
+        return weight * 0.04
+    }else if(age >= 1 && weight >= 11 && weight <= 15) {
+        return weight * 0.03
+    }else if(age >= 1 && weight > 15) {
+        return weight * 0.02
+    }else if(age >= 0.167 && age < 0.333) {
+        return weight * .10
+    }else if(age >= 0.333 && age < 0.583) {
+        return weight * .05
+    }else if(age >= 0.583 && age < 1) {
+        return weight * .04
     }
 }
 
-
+console.log(dogFeeder(15,1));
 
 
 /************************************************************** Task 4 **************************************************************/
@@ -77,28 +93,79 @@ const feedYourDog = (weight,age) => {
 // use math.random to determine the computers choice 
 // hint while you can complete this with only conditionals based on strings it may help to equate choice to a number 
 
-  
+function rockPaperScissors(yourGuess) {
+    let rock = 0;
+    let paper = 1;
+    let scissors = 2;
+    let computerGuess = Math.floor(Math.random() * 3);
+    
+    if(yourGuess === 'paper' && computerGuess === rock) {
+        return 'Paper covers rock! You win' + computerGuess
+    }else if(yourGuess === 'paper' && computerGuess === paper) {
+        return 'Tie!' + computerGuess
+    }else if(yourGuess === 'paper' && computerGuess === scissors) {
+        return 'Scissors cut paper! You lose' + computerGuess
+    }else if(yourGuess === 'rock' && computerGuess === paper) {
+        return 'Paper covers rock! You lose!' + computerGuess
+    }else if(yourGuess === 'rock' && computerGuess === rock) {
+        return 'Tie!' + computerGuess
+    }else if(yourGuess === 'rock' && computerGuess === scissors) {
+        return 'Rock smashes scissors! You win!' + computerGuess
+    }else if(yourGuess === 'scissors' && computerGuess === rock) {
+        return 'Rock smashes scissors! You Lose!' + computerGuess
+    }else if(yourGuess === 'scissors' && computerGuess === scissors) {
+        return 'Tie!' + computerGuess
+    }else if(yourGuess === 'scissors' && computerGuess === paper) {
+        return 'Scissors cut paper! You win!' + computerGuess
+    }else{
+      return 'Choose rock, paper or scissors to play'
+    }
+}
+
+console.log(rockPaperScissors('scissors'));
   
 
 /************************************************************** Task 5 **************************************************************/
 //Metric Converter
 //a. KM to Miles - should take the number of kilometers and convert it to the equal number of miles
+//Formula mi =km * 0.62137
+function kilometersToMiles(kilometers) {
+    return kilometers * 0.62137 + ' miles'
+}
 
-
-
-
+console.log(kilometersToMiles(1));
 
 //b. Feet to CM - should take the number of feet and convert it to the equal number of centimeters
   
+function feetToCentimeters(feet) {
+    return feet/0.032808 + " centimeters"
+}
 
-
+console.log(feetToCentimeters(4));
 
 
 /************************************************************** Task 6 **************************************************************/
 // 99 bottles of soda on the wall
 // create a function called annoyingSong
 // the function should take a starting number as an argument and count down - at each iteration it should log (number) bottles of soda on the wall, (number) bottles of soda, take one down pass it around (number left over) bottles of soda on the wall`
+//count = 0
+//for(i=0; i<10; i++) {
+//   count = count + 1
+//     console.log(count)
+//   }
+
+
+
+function annoyingSong(number) {
+ 
+    bottles = 0
+    for(i=number; i>0; i--) {
+    bottles = bottles + 1
+    console.log(number + ' bottles of soda on the wall,' + number + ' bottles of soda, take one down pass it around ' + (number - bottles) + ' bottles of soda on the wall');
+    }
+  }
   
+  annoyingSong(10);
 
 
 
@@ -111,9 +178,21 @@ const feedYourDog = (weight,age) => {
 //70s should be Cs 
 //60s should be D 
 //and anything below 60 should be F
-  
+function gradeCalc(number) {
+      if(number >= 90) {
+          return 'A'
+      }else if(number >=80 && number <= 89) {
+          return 'B'
+      }else if(number >=70 && number <= 79) {
+        return 'C'
+      }else if(number >=60 && number <= 69) {
+        return 'D'
+      }else{
+        return 'F'
+      }
+  }
 
-  
+  console.log(gradeCalc(79));
   
 
 /************************************************************** Stretch **************************************************************/
